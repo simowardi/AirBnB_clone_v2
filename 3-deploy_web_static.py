@@ -13,20 +13,25 @@ env.hosts = ["52.86.171.42", "54.90.41.188"]
 
 def do_pack():
     """
-    Creates a compressed archive of the web_static folder in the versions directory.
-
+    Creates a compressed archive of the web_static 
+    folder in the versions directory.
     Returns:
-        str: The filename of the created archive if successful, None otherwise.
+        str: The filename of the created archive 
+             if successful, None otherwise.
     """
-    try:
-        date = datetime.now().strftime("%Y%m%d%H%M%S")
-        if isdir("versions") is False:
-            local("mkdir versions")
-        file_name = "versions/web_static_{}.tgz".format(date)
-        local("tar -cvzf {} web_static".format(file_name))
-        return file_name
-    except:
+    dt = datetime.utcnow()
+    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
+                                                         dt.month,
+                                                         dt.day,
+                                                         dt.hour,
+                                                         dt.minute,
+                                                         dt.second)
+    if os.path.isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local("tar -cvzf {} web_static".format(file)).failed is True:
         return None
+    return file
 
 
 def do_deploy(archive_path):
