@@ -5,6 +5,7 @@ distributes an archive to the web servers
 
 execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/id_rsa -u ubuntu
 """
+import os.path
 from datetime import datetime
 from fabric.api import env, local, put, run
 
