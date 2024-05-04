@@ -13,10 +13,10 @@ env.hosts = ["52.86.171.42", "54.90.41.188"]
 
 def do_pack():
     """
-    Creates a compressed archive of the web_static 
+    Creates a compressed archive of the web_static
     folder in the versions directory.
     Returns:
-        str: The filename of the created archive 
+        str: The filename of the created archive
              if successful, None otherwise.
     """
     dt = datetime.utcnow()
