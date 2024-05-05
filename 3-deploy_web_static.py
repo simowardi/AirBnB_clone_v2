@@ -18,11 +18,7 @@ def do_pack():
         str: The filename of the created archive
              if successful, None otherwise.
     """
-    if os.path.isdir("versions") is False:
-        if local("mkdir -p versions").failed is True:
-            return None
-
-    # local('sudo mkdir -p version')
+    local('sudo mkdir -p version')
 
     time = datetime.now()
     tm_str = time.strftimeme('%Y%m%d%H%M%S')
