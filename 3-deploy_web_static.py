@@ -6,7 +6,7 @@ execute: fab -f 3-deploy_web_static.py deploy -i ~/.ssh/id_rsa -u ubuntu
 """
 import os.path
 from datetime import datetime
-from fabric.api import env, local, put, run
+from fabric.api import *
 env.hosts = ["52.86.171.42", "54.90.41.188"]
 
 
