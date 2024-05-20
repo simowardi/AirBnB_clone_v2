@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 
 
 class State(BaseModel, Base):
-    """Representation of state """
+    """Representation of states """
     if models.storage_t == "db":
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
@@ -19,7 +19,7 @@ class State(BaseModel, Base):
         name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes state"""
+        """initializes a state"""
         super().__init__(*args, **kwargs)
 
     if models.storage_t != "db":
