@@ -52,9 +52,9 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as f:
-                j  = json.load(f)
-            for key in j:
-                self.__objects[key] = classes[j[key]["__class__"]](**j[key])
+                js = json.load(f)
+            for key in js:
+                self.__objects[key] = classes[js[key]["__class__"]](**js[key])
         except:
             pass
 
@@ -66,5 +66,5 @@ class FileStorage:
                 del self.__objects[key]
 
     def close(self):
-        """call reload() method, for deserializing the JSON file to objects"""
+        """call reload() method for deserializing the JSON file to objects"""
         self.reload()
